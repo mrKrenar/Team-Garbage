@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class UiController : MonoBehaviour
 {
-    public UiController instance;
+    public static UiController instance;
 
     private void Awake()
     {

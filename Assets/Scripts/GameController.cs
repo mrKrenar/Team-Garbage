@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class GameController : MonoBehaviour
 {
-    public GameController instance;
+    public static GameController instance;
 
     private void Awake()
     {
