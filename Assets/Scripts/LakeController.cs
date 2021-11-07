@@ -84,6 +84,7 @@ public class LakeController : MonoBehaviour
                 litterSpawned = Instantiate(humanPrefab, litterableTransforms[channelIndex].litterableTransforms[newLitterableIndex].position, litterableTransforms[channelIndex].litterableTransforms[newLitterableIndex].rotation);
                 litterSpawned.GetComponent<HumanController>().StartLittering();
                 litterSpawned.transform.parent = allHumansParent;
+                CoinsSystem.RemoveCoins(10);
                 break;
             case LitterType.factory:
                 litterSpawned = Instantiate(factoryPrefab, litterableTransforms[channelIndex].litterableTransforms[newLitterableIndex].position, litterableTransforms[channelIndex].litterableTransforms[newLitterableIndex].rotation);
@@ -98,16 +99,12 @@ public class LakeController : MonoBehaviour
         }
         spawnedIndex++;
     }
-
-    //[SerializeField] Transform human;
-    //[SerializeField] GameObject garbagePrefab;
-    //private IEnumerator Start()
-    //{
-    //    yield return new WaitForSeconds(1);
-    //    var garbage = Instantiate(garbagePrefab, human.position, human.rotation);
-    //    MoveGarbageThroughChanelToLake(garbage, 0);
-    //    Debug.Log("Made garbage ", garbage);
-    //}
+    [SerializeField] GameObject garbagePrefab;
+    public void ThrowGarbage(Transform human)
+    {
+        var garbage = Instantiate(garbagePrefab, human.position, human.rotation);
+        MoveGarbageThroughChanelToLake(garbage, 0);
+    }
 
     public void MoveGarbageThroughChanelToLake(GameObject garbage, int channelIndex, bool startFromLakeStart = false)
     {

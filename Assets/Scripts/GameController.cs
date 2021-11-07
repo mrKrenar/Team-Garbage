@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class GameController : MonoBehaviour
 {
@@ -18,11 +19,24 @@ public class GameController : MonoBehaviour
         activeLake = allLakes[PlayerPrefs.GetInt("ActiveLake")].GetComponent<LakeController>();
     }
 
+    [SerializeField] TextMeshProUGUI coinsText;
+
     public GameObject[] allLakes;
     public LakeController activeLake;
     public GameObject allHumans, allFactories, allTrucks;
 
     [SerializeField] GameObject garbagePrefab;
+
+    private void Start()
+    {
+        UpdateCoinsText();
+    }
+
+    public void UpdateCoinsText()
+    {
+        coinsText.text = CoinsSystem.GetCoinsAmount().ToString();
+    }
+
 
     private void Update()
     {
@@ -56,4 +70,43 @@ public class GameController : MonoBehaviour
         activeLake.gameObject.SetActive(true);
     }
 
+    public void DonateTeamSeas()
+    {
+        Application.OpenURL("https://teamseas.org/");
+    }
+
+    public void BuyCharacter()
+    {
+        activeLake.AddLitterable(LitterType.human);
+    }
+
+    public void BuyFactories()
+    {
+        activeLake.AddLitterable(LitterType.factory);
+    }
+
+    public void BuyTruck()
+    {
+        activeLake.AddLitterable(LitterType.truck);
+    }
+
+    public void UpgradeAllCharacters()
+    {
+        print("BUy CHARACTER");
+        if (CoinsSystem.RemoveCoins(50))
+        {
+            allHumans.SendMessage("Upgrade", SendMessageOptions.DontRequireReceiver);
+
+        }
+    }
+
+    public void UpgradeAllFactoriesSpeed()
+    {
+        allFactories.SendMessage("UpgradeTrackSpeed", SendMessageOptions.DontRequireReceiver);
+    }
+
+    public void UpgradeAllFactoriesDelay()
+    {
+        allFactories.SendMessage("UpgradeThrowDelay", SendMessageOptions.DontRequireReceiver);
+    }
 }

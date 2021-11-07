@@ -9,6 +9,11 @@ public class HumanController : MonoBehaviour, ILitterable
     [SerializeField] float timeDecreasePerUpgrade = .1f;
     [SerializeField] int upgradeCost = 10, earningsPerGarbageThrown = 1;
 
+    private void Start()
+    {
+        StartLittering();
+    }
+
     public void StartLittering()
     {
         StopCoroutine(nameof(StartThrowingGarbage));
@@ -37,6 +42,6 @@ public class HumanController : MonoBehaviour, ILitterable
     {
         animator.SetTrigger("tr_ThrowGarbage");
         CoinsSystem.AddCoins(earningsPerGarbageThrown);
-        //TODO: continue implementation
+        GameController.instance.activeLake.ThrowGarbage(transform);
     }
 }
