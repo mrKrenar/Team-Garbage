@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &2936085246516629015
+--- !u!1 &2609999398688704902
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,44 +8,40 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 2936085246516629001}
-  - component: {fileID: 2936085246516629000}
+  - component: {fileID: 2609999398688704896}
+  - component: {fileID: 2609999398688704897}
   m_Layer: 0
-  m_Name: Human
+  m_Name: Truck
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &2936085246516629001
+  m_IsActive: 0
+--- !u!4 &2609999398688704896
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2936085246516629015}
+  m_GameObject: {fileID: 2609999398688704902}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 8, y: 8, z: 8}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2936085246516629000
+--- !u!114 &2609999398688704897
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2936085246516629015}
+  m_GameObject: {fileID: 2609999398688704902}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7d6a6b02f6a29044aa238004b0fc704a, type: 3}
+  m_Script: {fileID: 11500000, guid: 455a672349c24e24687ec419d1f6f5ed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  animator: {fileID: 0}
-  timeBetweenDrops: 3
-  minTimeBetweenDrops: 0.1
-  timeDecreasePerUpgrade: 0.1
-  upgradeCost: 10
-  earningsPerGarbageThrown: 1
+  garbageCount: 10
+  moveSpeed: 10
